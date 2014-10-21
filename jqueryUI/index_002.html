@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>Scrolling</title>
+		<link rel="stylesheet" href="static/css/style_002.css" type="text/css" media="screen" />
+		
+		<link href='http://fonts.googleapis.com/css?family=Fjord+One' rel='stylesheet' type='text/css'>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+
+		<script type="text/javascript" src="static/js/zoomooz/jquery.zoomooz-helpers.js"></script>
+		<script type="text/javascript" src="static/js/zoomooz/jquery.zoomooz-anim.js"></script>
+		<script type="text/javascript" src="static/js/zoomooz/jquery.zoomooz-core.js"></script>
+		<script type="text/javascript" src="static/js/zoomooz/purecssmatrix.js"></script>
+		<script type="text/javascript" src="static/js/zoomooz/sylvester.src.stripped.js"></script>
+		<script type="text/javascript" src="static/js/zoomooz/jquery.zoomooz-zoomTarget.js"></script>
+		<script type="text/javascript" src="static/js/zoomooz/jquery.zoomooz-zoomContainer.js"></script>
+		
+		
+	</head>
+	<body>
+    <div id="viewport" class="zoomViewport">
+        <div id="content" class="zoomContainer">
+                {% for a in actividades['items'] %}
+                  {% if a['verb'] == 'post' %}
+                  <div class="zoomTarget">
+                        <p>{{a['title']}}</p>
+                        <p><a href="{{a['url']}}">Link</a></p>
+                        <br>
+                        <p>Compartido: {{a['object']['resharers']['totalItems']}}</p>
+
+                        {% if a['object']['attachments'] %}
+
+                            {% for b in a['object']['attachments'] if not b['image']['url'] == None %}
+
+                                   <center><img src="{{b['image']['url']}}" alt="nada" height="100" width="200"></center>
+
+                            {% endfor %}
+                        {% endif %}
+
+                  </div>
+                  {% endif %}
+               {% endfor %}
+			    <span class="clearer"></span>
+	    </div>
+    </div>
+	</body>
+
+</html>

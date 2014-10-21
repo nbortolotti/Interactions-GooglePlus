@@ -6,9 +6,15 @@
       Panel de Visualizacion Utilizando BigQuery
     </title>
 
+
   </head>
   <body style="font-family: Arial;border: 0 none;">
     <br>{{nombre_usuario}}</br>
+    <a href="{{actividad}}">link</a>
+
+    {% for a in actividades['items'] %}
+       <li>{{a['title']}}</li>
+    {% endfor %}
   </body>
 </html>
 ​
